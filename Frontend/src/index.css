@@ -1,0 +1,69 @@
+/* ─────────────────────────────────────────────
+   Design Tokens – four-colour palette only
+───────────────────────────────────────────── */
+:root {
+  --primary:        #1F3A5F;   /* Primary Navy     */
+  --accent:         #5AA9E6;   /* Accent Blue      */
+  --bg:             #EAF4F4;   /* Light Surface    */
+  --surface-dark:   #222831;   /* Dark Surface     */
+
+  /* Derived shades (opacity / mix) */
+  --primary-light:  rgba(31, 58, 95, 0.08);
+  --primary-mid:    rgba(31, 58, 95, 0.45);
+  --accent-light:   rgba(90, 169, 230, 0.15);
+  --accent-hover:   rgba(90, 169, 230, 0.30);
+  --surface-mid:    rgba(34, 40, 49, 0.70);
+  --text-on-dark:   #EAF4F4;
+  --text-muted:     rgba(234, 244, 244, 0.55);
+  --border-dark:    rgba(90, 169, 230, 0.18);
+  --border-light:   rgba(31, 58, 95, 0.15);
+
+  /* Typography */
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Reset ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--primary);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ─── Scrollbar (webkit) ─────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--primary-mid);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* ─── Utility ────────────────────────────────── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
