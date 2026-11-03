@@ -135,14 +135,16 @@ export default function App() {
       const response = await axios.post(
         `${API_URL}/ai/get-review`,
         { code },
-        { timeout: 60_000 }
+        // Gemini can take well over a minute on Render's free instance, so
+        // keep the client request alive long enough to receive the result.
+        { timeout: 180_000 }
       )
       setReview(response.data)
       setStatus(STATUS.SUCCESS)
     } catch (err) {
       let msg = 'Could not connect to the review service. Make sure the backend is running and try again.'
       if (err.code === 'ECONNABORTED') {
-        msg = 'The review timed out after 30 seconds. Please try again.'
+        msg = 'The review timed out after 3 minutes. Please try again.'
       } else if (err.response?.data?.error) {
         msg = err.response.data.error
       } else if (typeof err.response?.data === 'string') {
